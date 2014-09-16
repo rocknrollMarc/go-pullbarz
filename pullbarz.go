@@ -3,7 +3,7 @@ package pullbarz
 import (
   "sort"
   "github.com/tlorens/ansiout"
-  "github.com/tlorens/ibkey"
+  "github.com/tlorens/keyboard"
 )
 
 var options map[int]string
@@ -53,17 +53,17 @@ func LightBar(X int, Y int) int {
 
 	forloop:
 		for {
-			ch := ibkey.ReadKey(false)
+			ch := keyboard.ReadKey()
 
 			switch ch {
 				case 96:
 					break forloop
 
-				case ibkey.KEY_LF:
+				case keyboard.KEY_LF:
 					decChoice()
 					break;
 
-				case ibkey.KEY_RT:
+				case keyboard.KEY_RT:
 					incChoice()
 					break;
 
