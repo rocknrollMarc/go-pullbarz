@@ -17,9 +17,9 @@ var count int = 1
 func writeOption(s string, selected bool) {
 	for i := range s {
 		if s[i] > 64 && s[i] < 91 {
-			ansiout.Print(11,0, string(s[i]))
+			ansiout.Print(11, 0, string(s[i]))
 		} else {
-			ansiout.Print(7,0, string(s[i]))
+			ansiout.Print(7, 0, string(s[i]))
 		}
 	}
 }
@@ -32,8 +32,7 @@ func LightBar(X int, Y int) int {
 		X, Y = ansiout.CursorXY()
 	}
 
-	ansiout.GotoXY(X, Y)
-	ansiout.Print(11,0, "|")
+	ansiout.PrintColorXY(11, 0, X, Y, "|")
 
 	for _, k := range keys {
 		OptY[count], OptX[count] = ansiout.CursorXY()
@@ -107,9 +106,7 @@ func decChoice() {
 func writeSelect() {
 	ansiout.GotoXY(OptY[lastOpt], OptX[lastOpt])
 	writeOption(" " + options[lastOpt] + " ", false)
-
-	ansiout.GotoXY(OptY[curOpt], OptX[curOpt])
-	ansiout.Print(7, 1, " " + options[curOpt] + " ")
+	ansiout.PrintColorXY(7, 1, OptY[curOpt], OptX[curOpt], " " + options[curOpt] + " ")
 }
 
 
